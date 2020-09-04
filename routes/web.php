@@ -15,4 +15,4 @@ Route::get('/', function () {
     return redirect('motoristas');
 });
 
-Route::resource('motoristas', 'MotoristasController');
+Route::resource('motoristas', 'MotoristasController')->except(['create','show','edit']);
