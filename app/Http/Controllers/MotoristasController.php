@@ -29,8 +29,8 @@ class MotoristasController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|max:100',
-            'cpf' => 'required|cpf|unique:motoristas,cpf',
-            'email' => 'required|email',
+            'cpf' => 'required|cpf|max:11|unique:motoristas,cpf',
+            'email' => 'required|email|max:320',
             'situacao' => 'required|in:livre,em curso,retornando',
             'status' => 'required|in:ativo,inativo'
         ]);
@@ -49,8 +49,8 @@ class MotoristasController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|max:100',
-            'cpf' => ['required','cpf', Rule::unique('motoristas', 'cpf')->ignore($motorista->id)],
-            'email' => 'required|email',
+            'cpf' => ['required', 'max:11','cpf', Rule::unique('motoristas', 'cpf')->ignore($motorista->id)],
+            'email' => 'required|email|max:320',
             'situacao' => 'required|in:livre,em curso,retornando',
             'status' => 'required|in:ativo,inativo'
         ]);
